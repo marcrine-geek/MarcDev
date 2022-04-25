@@ -50,7 +50,7 @@ if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
 <body>
 <div class="container" style="padding: 50px;">
     <h1><strong>MarcDev</strong></h1>
-    <form action="index.html" method="post">
+    <form action="dashboard.php" method="post">
         <div style="padding: 20px;">
             <label for="uname">Username</label>
             <input type="text" name="uname" placeholder="Enter user name">
