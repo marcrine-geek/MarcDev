@@ -1,11 +1,3 @@
-<?php
-require 'connection.php';
-//fetching user name
-if (isset($_POST['uname']))
-{
-//    echo $_POST['uname'];
-}
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,23 +15,43 @@ if (isset($_POST['uname']))
             color: white;
             padding-left: 5px;
         }
+        label{
+            display: inline-block;
+            width: 150px;
+            font-size: 20px;
+        }
+        input[type = text]{
+            border: 2px solid #9ca3af;
+            border-radius: 5px;
+            width: 300px;
+            color: black;
+        }
     </style>
 </head>
 <body>
 
 <div class="container-fluid">
     <div class="row">
-<!--        sidebar-->
+        <!--        sidebar-->
         <?php
-            include 'sidebar.php';
+        include 'sidebar.php';
         ?>
-<!--        end of sidebar-->
+        <!--        end of sidebar-->
 
-<!--        inner content-->
+        <!--        inner content-->
         <div class="col-md-8">
-            <h1 style="padding-top: 300px; padding-left: 200px;">Welcome <?php echo $_POST['uname']; ?></h1>
+            <form action="" style="">
+                <div style="padding-top: 100px; padding-left: 300px;">
+                    <label for="project">Project Name</label>
+                    <input type="text" name="project" placeholder="name of project">
+                </div>
+                <div style="padding-top: 100px; padding-left: 300px;">
+                    <label for="project">Project Name</label>
+                    <input type="text" name="project" placeholder="name of project">
+                </div>
+            </form>
         </div>
-<!--        end of inner content-->
+        <!--        end of inner content-->
 
     </div>
 </div>
