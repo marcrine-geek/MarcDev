@@ -20,10 +20,11 @@
             width: 150px;
             font-size: 20px;
         }
-        input[type = text]{
+        input[type = text], input[type = number]{
             border: 2px solid #9ca3af;
             border-radius: 5px;
-            width: 300px;
+            width: 400px;
+            height: 50px;
             color: black;
         }
     </style>
@@ -41,14 +42,34 @@
         <!--        inner content-->
         <div class="col-md-8">
             <form action="" style="">
-                <div style="padding-top: 100px; padding-left: 300px;">
+                <h1 style="padding-top: 100px; padding-left: 350px;">Make your request</h1>
+                <div style="padding-top: 50px; padding-left: 300px;">
                     <label for="project">Project Name</label>
                     <input type="text" name="project" placeholder="name of project">
                 </div>
-                <div style="padding-top: 100px; padding-left: 300px;">
-                    <label for="project">Project Name</label>
-                    <input type="text" name="project" placeholder="name of project">
+                <div style="padding-top: 30px; padding-left: 300px;">
+                    <label for="typeofproject">Type of Project</label>
+                    <select name="typeofproject" id="" style="width: 400px; height: 50px;">
+                        <option value="">--select--</option>
+                        <option value="application">Web Application</option>
+                        <option value="site">Website</option>
+                        <option value="software">Software</option>
+                        <option value="design">UX/UI</option>
+                        <option value="pages">Web pages</option>
+                    </select>
                 </div>
+                <div style="padding-top: 30px; padding-left: 300px;">
+                    <label for="">Project Details</label>
+                    <textarea name="details" id="" cols="35" rows="6" placeholder="Enter details..."></textarea>
+                </div>
+                <div style="padding-top: 30px; padding-left: 300px;">
+                    <label for="amount">Your Amount</label>
+                    <input type="number" name="amount" placeholder="amount">
+                </div>
+                <div style="padding-top: 30px; padding-left: 400px;">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+
             </form>
         </div>
         <!--        end of inner content-->
