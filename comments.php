@@ -1,3 +1,35 @@
+<?php
+require 'connection.php';
+
+if (isset($_POST['name']) && isset($_POST['comments']) && isset($_POST['time']))
+
+    $name=$_POST['name'];
+    $comments=$_POST['comments'];
+    $time=date("Y-m-d H:i:s");
+
+//    $stmt = $connection->prepare("INSERT INTO `comments` (`name`, `comments`, `time`) VALUES (?, ?, ?)");
+//    $stmt->bind_param("sss", $name, $comments, $time);
+//
+//    if ($stmt->execute())
+//    {
+//        echo "message sent";
+//    }else{
+//        echo "message not sent";
+//    }
+
+    $insert = mysqli_query($connection, "INSERT INTO `comments` (`name`, `comments`, `time`) VALUES ('$name', '$comments', '$time') ");
+
+    if ($insert === TRUE)
+    {
+        echo "message sent successfully";
+    }
+    else{
+        echo "message not sent";
+    }
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -34,7 +66,14 @@
                 <div>
                     <form action="" method="post">
 <!--                        post comments with username-->
-                        <textarea name="comment" id="" cols="40" rows="3" placeholder="Message..."></textarea>
+                        <div>
+                            <label for="name">username</label>
+                            <input type="text" id="name" name="name" placeholder="username">
+                        </div>
+                        <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Message..."></textarea>
+                        <div style="padding-top: 20px;">
+                            <input type="submit" name="submit" class="btn btn-primary">
+                        </div>
                     </form>
                 </div>
                 <div>
