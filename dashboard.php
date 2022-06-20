@@ -1,6 +1,13 @@
 <?php
 require 'connection.php';
 require 'fetchData.php';
+
+include('functions.php');
+if (!isLoggedIn()) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: login.php');
+}
+
 //$user = fetchUser($connection, $_GET['id']);
 //fetching user name
 if (isset($_POST['uname']))
