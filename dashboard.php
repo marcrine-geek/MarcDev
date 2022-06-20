@@ -1,10 +1,13 @@
 <?php
 require 'connection.php';
+require 'fetchData.php';
+//$user = fetchUser($connection, $_GET['id']);
 //fetching user name
 if (isset($_POST['uname']))
 {
 //    echo $_POST['uname'];
 }
+
 ?>
 <!doctype html>
 <html lang="en">

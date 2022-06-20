@@ -1,14 +1,7 @@
 <?php
 session_start();
-require 'connection.php';
-require 'loginuser.php';
-if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
+include('functions.php');
 
-    $email = $_SESSION['email'];
-    $get_user_data = mysqli_query($connection, "SELECT * FROM `users` WHERE `email` = '$email'");
-    $userData =  mysqli_fetch_assoc($get_user_data);
-
-}
 ?>
 
 <!doctype html>
@@ -50,19 +43,19 @@ if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
 <body>
 <div class="container" style="padding: 50px;">
     <h1><strong>MarcDev</strong></h1>
-    <form action="dashboard.php" method="post">
-        <div style="padding: 20px;">
-            <label for="uname">Username</label>
-            <input type="text" name="uname" placeholder="Enter user name">
-        </div>
-        <div style="padding: 20px;">
-            <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Enter password">
-        </div>
-        <div style="padding: 20px;">
-            <input type="submit" value="Login" class="btn btn-primary">
-        </div>
-    </form>
+        <form action="login.php" method="post">
+            <div style="padding: 20px;">
+                <label for="uname">Username</label>
+                <input type="text" name="uname" placeholder="Enter user name">
+            </div>
+            <div style="padding: 20px;">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Enter password">
+            </div>
+            <div style="padding: 20px;">
+                <button type="submit" class="btn btn-primary" name="login_btn">Login</button>
+            </div>
+        </form>
 </div>
 
 </body>

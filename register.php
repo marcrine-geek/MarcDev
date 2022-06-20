@@ -1,11 +1,7 @@
 <?php
 session_start();
-require 'connection.php';
-require 'insertuser.php';
-if(isset($_SESSION['email'])){
-    header('Location: login.php');
-    exit;
-}
+include('functions.php');
+
 ?>
 
 <!doctype html>
@@ -66,10 +62,14 @@ if(isset($_SESSION['email'])){
         </div>
         <div style="padding: 20px;">
             <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Enter your password">
+            <input type="password" name="password_1" placeholder="Enter your password">
         </div>
         <div style="padding: 20px;">
-            <input type="submit" value="Register" name="submit" class="btn btn-primary">
+            <label for="password">Confirm Password</label>
+            <input type="password" name="password_2" placeholder="Enter your password">
+        </div>
+        <div style="padding: 20px;">
+            <button type="submit" class="btn btn-primary" name="register_btn">Register</button>
         </div>
     </form>
 </div>

@@ -1,31 +1,27 @@
 <?php
 require 'connection.php';
+require 'fetchData.php';
 
-if (isset($_POST['name']) && isset($_POST['comments']) && isset($_POST['time']))
+$all_comments = fetchComments($connection);
 
-    $name=$_POST['name'];
-    $comments=$_POST['comments'];
-    $time=date("Y-m-d H:i:s");
+//$user = fetchUser($connection, $_GET['id']);
 
-//    $stmt = $connection->prepare("INSERT INTO `comments` (`name`, `comments`, `time`) VALUES (?, ?, ?)");
-//    $stmt->bind_param("sss", $name, $comments, $time);
-//
-//    if ($stmt->execute())
-//    {
-//        echo "message sent";
-//    }else{
-//        echo "message not sent";
-//    }
+$name = $_POST['name'];
+$comments = $_POST['comments'];
+$time = date("Y-m-d H:i:s");
 
-    $insert = mysqli_query($connection, "INSERT INTO `comments` (`name`, `comments`, `time`) VALUES ('$name', '$comments', '$time') ");
 
-    if ($insert === TRUE)
-    {
-        echo "message sent successfully";
+if (isset($name) && isset($comments) && isset($time))
+{
+    $sql = "INSERT INTO `comments`(`name`, `comments`, `time`) VALUES('$name', '$comments', '$time')";
+
+    if(mysqli_query($connection, $sql)){
+        $all_comments = fetchComments($connection);
+    } else{
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($connection);
     }
-    else{
-        echo "message not sent";
-    }
+
+}
 
 
 ?>
@@ -63,19 +59,41 @@ if (isset($_POST['name']) && isset($_POST['comments']) && isset($_POST['time']))
         <div class="col-md-8">
             <div style="padding-top: 100px; padding-left: 250px;">
                 <h1>Comments</h1>
-                <div>
+                <div style="padding-top: 10px; overflow-x: hidden; overflow-y: auto; height: 500px;">
+                    <?php if (count($all_comments) > 0):?>
+                        <?php foreach ($all_comments as $comment):
+                            $name = $comment['name'];
+                            $comments = $comment['comments'];
+                            $time = $comment['time'];
+                            ?>
+
+                            <div style="border: 2px solid black; border-radius: 5px; margin-top: 5px; width: 50%;">
+                                <p>
+                                    <?php echo $name; ?> : <br>
+                                    <?php echo $comments; ?><br>
+                                    <?php echo $time; ?>
+                                </p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <h3>No New Messages</h3>
+                    <?php endif; ?>
+                </div>
+                <div style="padding-top: 50px;">
                     <form action="" method="post">
 <!--                        post comments with username-->
                         <div>
-                            <label for="name">username</label>
                             <input type="text" id="name" name="name" placeholder="username">
                         </div>
-                        <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Message..."></textarea>
+                        <div style="padding-top: 5px;">
+                            <textarea name="comments" id="comments" cols="40" rows="3" placeholder="Message..."></textarea>
+                        </div>
                         <div style="padding-top: 20px;">
                             <input type="submit" name="submit" class="btn btn-primary">
                         </div>
                     </form>
                 </div>
+
                 <div>
 <!--                    get comments from database-->
                 </div>
