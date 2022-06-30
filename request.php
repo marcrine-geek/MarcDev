@@ -1,3 +1,7 @@
+<?php
+    include "functions.php";
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -41,7 +45,7 @@
 
         <!--        inner content-->
         <div class="col-md-8">
-            <form action="" style="">
+            <form action="" method="post">
                 <h1 style="padding-top: 100px; padding-left: 350px;">Make your request</h1>
                 <div style="padding-top: 50px; padding-left: 300px;">
                     <label for="project">Project Name</label>
@@ -67,7 +71,7 @@
                     <input type="number" name="amount" placeholder="amount">
                 </div>
                 <div style="padding-top: 30px; padding-left: 400px;">
-                    <input type="submit" class="btn btn-primary">
+                    <input type="submit" class="btn btn-primary" name="request">
                 </div>
 
             </form>

@@ -1,5 +1,11 @@
 <?php
 
+function fetchRequests($connection)
+{
+    $query = mysqli_query($connection, "SELECT * FROM `requests`");
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
+
 function fetchComments($connection)
 {
     $query = mysqli_query($connection, "SELECT * FROM `comments`");

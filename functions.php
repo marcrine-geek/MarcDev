@@ -16,6 +16,57 @@ if (isset($_POST['register_btn'])) {
     register();
 }
 
+//call the request() function when submit project request button is clicked
+if (isset($_POST['request'])){
+    request();
+}
+
+//call the sample() function when sample button is clicked
+if (isset($_POST['sample'])){
+    sample();
+}
+
+//sample projects
+function sample(){
+    //variables
+    global $db;
+
+    //receive input
+    $project    =  e($_POST['project']);
+    $typeofproject    =  e($_POST['typeofproject']);
+    $details    =  e($_POST['details']);
+
+    $query = "INSERT INTO samples (project, typeofproject, details) 
+					  VALUES('$project','$typeofproject', '$details')";
+    mysqli_query($db, $query);
+
+    header('location: sample.php');
+
+}
+
+//Request project
+function request(){
+    //variables
+    global $db;
+
+    //receive input
+    $project    =  e($_POST['project']);
+    $typeofproject    =  e($_POST['typeofproject']);
+    $details    =  e($_POST['details']);
+    $amount       =  e($_POST['amount']);
+
+    $query = "INSERT INTO requests (project, typeofproject, details, amount) 
+					  VALUES('$project','$typeofproject', '$details', '$amount')";
+    mysqli_query($db, $query);
+
+    header('location: request.php');
+
+}
+
+
+
+
+
 // REGISTER USER
 function register(){
     // call these variables with the global keyword to make them available in function
