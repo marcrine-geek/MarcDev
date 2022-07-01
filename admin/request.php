@@ -50,6 +50,11 @@ $requests = fetchRequests($connection);
 
         <!--        inner content-->
         <div class="col-md-8">
+            <!--        topbar-->
+            <?php
+            include 'topbar.php';
+            ?>
+            <!--        end topbar-->
             <h1 style="padding-top: 50px; padding-left: 50px;">Project Requests</h1>
             <div style="padding-top: 40px; overflow-x: hidden; overflow-y: auto; height: 500px;">
                 <?php if (count($requests) > 0):?>

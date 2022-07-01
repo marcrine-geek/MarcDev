@@ -27,8 +27,14 @@
         ?>
         <!--        end of sidebar-->
 
+
         <!--        inner content-->
         <div class="col-md-8">
+            <!--        topbar-->
+            <?php
+            include 'topbar.php';
+            ?>
+            <!--        end topbar-->
             <div style="padding-top: 100px; padding-left: 250px;">
                 <h1>Report about the progress</h1>
             </div>

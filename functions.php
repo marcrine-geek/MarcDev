@@ -26,6 +26,28 @@ if (isset($_POST['sample'])){
     sample();
 }
 
+//call the send() function when send is clicked
+if (isset($_POST['send']))
+{
+    send();
+}
+
+//send message
+function send(){
+    global $db;
+
+    $name = e($_POST['name']);
+    $email = e($_POST['email']);
+    $subject = e($_POST['subject']);
+    $message= e($_POST['message']);
+
+    $query = "INSERT INTO messages (name, email, subject, message) VALUES('$name', '$email', '$subject', '$message')";
+    mysqli_query($db, $query);
+
+    header('location: contactus.php');
+}
+
+
 //sample projects
 function sample(){
     //variables
@@ -62,10 +84,6 @@ function request(){
     header('location: request.php');
 
 }
-
-
-
-
 
 // REGISTER USER
 function register(){

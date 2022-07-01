@@ -1,7 +1,6 @@
 <?php
 include "../functions.php";
 
-
 ?>
 
 
@@ -34,8 +33,14 @@ include "../functions.php";
         ?>
         <!--        end of sidebar-->
 
+
         <!--        inner content-->
         <div class="col-md-8">
+            <!--        topbar-->
+            <?php
+            include 'topbar.php';
+            ?>
+            <!--end topbar-->
             <div style="padding-top: 100px; padding-left: 250px;">
                 <form action="" method="post">
                     <h1 style="padding-top: 100px; padding-left: 350px;">Sample Projects</h1>

@@ -1,5 +1,11 @@
 <?php
 
+function fetchSamples($connection)
+{
+    $query = mysqli_query($connection, "SELECT * FROM `samples`");
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
+
 function fetchRequests($connection)
 {
     $query = mysqli_query($connection, "SELECT * FROM `requests`");
@@ -9,6 +15,12 @@ function fetchRequests($connection)
 function fetchComments($connection)
 {
     $query = mysqli_query($connection, "SELECT * FROM `comments`");
+    return mysqli_fetch_all($query, MYSQLI_ASSOC);
+}
+
+function fetchUsers($connection)
+{
+    $query = mysqli_query($connection, "SELECT * FROM `users`");
     return mysqli_fetch_all($query, MYSQLI_ASSOC);
 }
 

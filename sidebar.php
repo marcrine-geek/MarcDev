@@ -1,4 +1,4 @@
-<div class="col-md-4" style="background-color: #0f3d81; color: white; width: 15%; height: 964px; border-radius: 10px; margin-left: 20px; margin-top: 5px;">
+<div class="col-md-4" style="background-color: #0f3d81; color: white; width: 15%; height: 964px; border-radius: 10px;">
     <h1 style="padding-left: 20px;">MarcDev</h1>
     <div style="background-color: lightgoldenrodyellow; height: 200px; width: 200px; border-radius: 50%;">
         <h6 style="color: gray; padding-top: 45px; padding-left: 55px; font-size: 90px;"><i class="bi bi-camera-fill"></i></h6>

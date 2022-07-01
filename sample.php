@@ -1,3 +1,12 @@
+<?php
+require 'connection.php';
+require 'fetchData.php';
+
+$samples = fetchSamples($connection);
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,6 +40,26 @@
         <div class="col-md-8">
             <div style="padding-top: 100px; padding-left: 250px;">
                 <h1>sample projects</h1>
+                <div style="padding-top: 40px; overflow-x: hidden; overflow-y: auto; height: 500px;">
+                    <?php if (count($samples) > 0):?>
+                        <?php foreach ($samples as $sample):
+                            $project = $sample['project'];
+                            $typeofproject = $sample['typeofproject'];
+                            $details = $sample['details'];
+                            ?>
+
+                            <div style="border: 2px solid black; border-radius: 5px; margin-top: 5px; width: 50%;">
+                                <p>
+                                <h5>Name of Project:</h5><?php echo $project; ?> <br>
+                                <h5>Type of Project:</h5><?php echo $typeofproject; ?><br>
+                                <h5>Details:</h5><?php echo $details; ?>
+                                </p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <h3>No Samples</h3>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
         <!--        end of inner content-->

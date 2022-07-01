@@ -1,7 +1,9 @@
 <?php
 require '../connection.php';
 require '../fetchData.php';
+include "../functions.php";
 
+$users = fetchUsers($connection);
 
 ?>
 <!doctype html>
@@ -28,14 +30,51 @@ require '../fetchData.php';
 <div class="container-fluid">
     <div class="row">
         <!--        sidebar-->
-
-        <!--        end of sidebar-->
         <?php
         include 'sidebar.php';
         ?>
+        <!--        end of sidebar-->
+
         <!--        inner content-->
         <div class="col-md-8">
-            <h1 style="padding-top: 300px; padding-left: 200px;">This is admin page</h1>
+<!--            topbar-->
+            <?php
+            include 'topbar.php';
+            ?>
+<!--            end topbar-->
+
+            <h1 style="padding-left: 300px; padding-top: 30px;">Available Users</h1>
+
+            <table style="margin-left: 200px; margin-top: 50px;">
+                <tr>
+                    <th style="">FirstName</th>
+                    <th style="padding-left: 20px;">LastName</th>
+                    <th style="padding-left: 20px;">UserName</th>
+                    <th style="padding-left: 20px;">Email</th>
+                    <th style="padding-left: 20px;">Edit</th>
+                    <th style="padding-left: 20px;">Delete</th>
+                </tr>
+
+                <?php if (count($users) > 0 ): ?>
+                    <?php foreach ($users as $user):
+                        $fname = $user['fname'];
+                        $lname = $user['lname'];
+                        $uname = $user['uname'];
+                        $email = $user['email'];
+                        ?>
+                        <tr>
+                            <td><?php echo $fname; ?></td>
+                            <td style="padding-left: 20px;"><?php echo $lname; ?></td>
+                            <td style="padding-left: 20px;"><?php echo $uname; ?></td>
+                            <td style="padding-left: 20px;"><?php echo $email; ?></td>
+                            <td style="padding-left: 20px;"><button class="btn btn-primary">Edit</button></td>
+                            <td style="padding-left: 20px;"><button class="btn btn-danger">Delete</button></td>
+                        </tr>
+                    <?php endforeach;?>
+                <?php else: ?>
+                    <h2>No users</h2>
+                <?php endif; ?>
+            </table>
         </div>
         <!--        end of inner content-->
 
